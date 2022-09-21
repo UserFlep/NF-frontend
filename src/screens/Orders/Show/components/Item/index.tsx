@@ -5,7 +5,8 @@ import styles from "./styles.m.styl";
 
 const Item = observer(
   ({ item }: { item: SingleOrderItem }): JSX.Element => {
-    return <div className={styles.item}>{item.offer.displayName}</div>;
+      console.log(item)
+    return <div className={styles.item}>{item.offer?.displayName}</div>;
   }
 );
 

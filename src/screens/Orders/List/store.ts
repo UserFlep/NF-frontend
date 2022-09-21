@@ -84,7 +84,7 @@ export default class OrdersListState {
 
   initialize() {
     if (this.initialized) return;
-    this.setInitialized(true);
     this.loadOrders();
+    this.setInitialized(true);
   }
 }

@@ -18,7 +18,7 @@ const ListItem = observer(
         </div>
         <div>{moment(order.createdAt).format("DD.MM.YYYY HH:mm")}</div>
         <div title={order.delivery?.code}>
-          {order.delivery && <DeliveryType code={order.delivery?.code} />}
+          {order.delivery && <DeliveryType code={order.delivery?.code ?? "Нет информации"} />}
         </div>
         <div>{moment().from(order.createdAt, true)}</div>
         <div title={order.status}>
