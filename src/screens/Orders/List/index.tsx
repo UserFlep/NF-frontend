@@ -9,14 +9,16 @@ import Button from "../../../components/Button";
 import AngleLeftIcon from "../../../assets/icons/angle-left-solid.svg";
 import AngleRightIcon from "~/assets/icons/angle-right-solid.svg";
 import ListItem from "./components/ListItem";
+import { useGlobalState } from "~/screens/globalState";
 
 const OrdersList = observer(
   (): JSX.Element => {
     const [state] = React.useState(new OrdersListState());
+    const globalState = useGlobalState();
 
     useEffect(() => {
-      if (state.initialized) return;
-      state.initialize();
+        if (state.initialized) return;
+        state.initialize();
     });
 
     return (
@@ -37,7 +39,7 @@ const OrdersList = observer(
                 </div>
                 <div className={styles.body}>
                   {map(state.orders, (order: OrdersListItem, index: number) => (
-                    <ListItem order={order} key={index} />
+                    <ListItem order={order} key={index}/>
                   ))}
                 </div>
               </div>
@@ -45,7 +47,7 @@ const OrdersList = observer(
             <div className={styles.pagination}>
               <Button
                 small
-                text="PREV"
+                text="Назад"
                 icon={AngleLeftIcon}
                 resting
                 disabled={!state.canPrev}
@@ -53,7 +55,7 @@ const OrdersList = observer(
               />
               <Button
                 small
-                text="NEXT"
+                text="Вперед"
                 rightIcon={AngleRightIcon}
                 resting
                 disabled={!state.canNext}

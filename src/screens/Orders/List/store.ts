@@ -19,6 +19,12 @@ export default class OrdersListState {
   constructor() {
     makeAutoObservable(this);
     this.history = createBrowserHistory();
+    //set oldCurrentPage on refresh
+    const url = new URL(window.location.href);
+    const page = url.searchParams.get("page")
+    if(page){
+      this.setPage(Number(page))
+    }
   }
 
   setOrders(orders: OrdersListItem[]): void {
